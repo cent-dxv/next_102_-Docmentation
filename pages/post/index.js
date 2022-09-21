@@ -23,11 +23,11 @@ function Post({ post }) {
 
 export default Post;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const responce = await fetch("https://jsonplaceholder.typicode.com/posts")
   const responce = await fetch("http://localhost:4000/post");
 
   const data = await responce.json();
 
-  return { props: { post: data.slice() }, revalidate: 2 };
+  return { props: { post: data.slice() } };
 }

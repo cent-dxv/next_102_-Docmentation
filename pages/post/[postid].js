@@ -20,42 +20,9 @@ function Post_d({ post, user }) {
 
 export default Post_d;
 
-export async function getStaticPaths() {
-  const responce = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-  const data = await responce.json();
 
-  // // this fore fall back to fallse and dynamically fill
-  // // fill all paht
-  // const paths = data.map((post) => ({
-  //   // params: { postid: post.id.toString() },
-  //   params: { postid: `${post.id}` },
-  // }));
 
-  // return {
-  //   paths: paths,
-  //   fallback: false,
-  // };
-
-  // this for fall back true
-  // the path not generated durign build time
-  // will not result 404 page instade it
-  // call for api in back ground and serve while it done
-
-  return {
-    paths: [
-      {
-        params: { postid: "1" },
-      },
-      {
-        params: { postid: "2" },
-      },
-    ],
-    // fallback :true
-    fallback: 'blocking',
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { params } = context;
   // http://localhost:4000/user
   //   http://localhost:4000/post
@@ -86,7 +53,6 @@ export async function getStaticProps(context) {
     props: {
       post: data,
       user: user_data,
-    },
-    revalidate: 1
+    }
   };
 }
