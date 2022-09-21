@@ -1,6 +1,10 @@
 function Home() {
   return (
-    <div>index</div>
+    <div className="container">
+
+      <h1> users</h1>
+
+    </div>
   )
 }
 
