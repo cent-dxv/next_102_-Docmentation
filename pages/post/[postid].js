@@ -50,7 +50,8 @@ export async function getStaticPaths() {
         params: { postid: "2" },
       },
     ],
-    fallback: true,
+    // fallback :true
+    fallback: 'blocking',
   };
 }
 
@@ -63,6 +64,7 @@ export async function getStaticProps(context) {
   const data = await responce.json();
     console.log(data)
   if (!data.id) {
+    
     return {
       notFound: true
     }
@@ -73,11 +75,8 @@ export async function getStaticProps(context) {
   );
   const user_data = await user_responce.json();
 
-  if (!data.id) {
-    return {
-      notFound: true,
-    };
-  }
+ 
+  
   return {
     props: {
       post: data,
