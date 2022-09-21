@@ -25,7 +25,7 @@ export default Post_d;
 export async function getServerSideProps(context) {
   const { params, req, res } = context;
   console.log(req.headers.cookies)
-  res.serHeaders('Set-Cookie',['name = cent' ])
+  // res.serHeaders('Set-Cookie',['name = cent' ])
   // http://localhost:4000/user
   //   http://localhost:4000/post
 
