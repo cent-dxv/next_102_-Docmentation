@@ -3,6 +3,8 @@ import User from "../components/user";
 function Users({ users }) {
   // console.log(users)
 
+
+  // isr
   return (
     <div className="card">
       <h1>Users List</h1>
