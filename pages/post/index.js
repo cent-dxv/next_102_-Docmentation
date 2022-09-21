@@ -30,6 +30,8 @@ export default Post
 
 export async function getStaticProps(){
   const responce = await fetch("https://jsonplaceholder.typicode.com/posts")
+  // const responce = await fetch("http://localhost:4000/post")
+
   const data  = await responce.json()
   
   return{ props : { post: data.slice() }}

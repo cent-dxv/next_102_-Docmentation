@@ -57,8 +57,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const { params } = context;
+  // http://localhost:4000/user
+  //   http://localhost:4000/post
 
   const responce = await fetch(
+    // `http://localhost:4000/post/${params.postid}`
     `https://jsonplaceholder.typicode.com/posts/${params.postid}`
   );
   const data = await responce.json();
@@ -71,8 +74,10 @@ export async function getStaticProps(context) {
   }
 
   const user_responce = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${data.userId}`
-  );
+    // `http://localhost:4000/user/${data.userId}`
+   `https://jsonplaceholder.typicode.com/users/${data.userId}`
+
+    );
   const user_data = await user_responce.json();
 
  
