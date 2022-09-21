@@ -23,7 +23,9 @@ export default Post_d;
 
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, req, res } = context;
+  console.log(req.headers.cookies)
+  res.serHeaders('Set-Cookie',['name = cent' ])
   // http://localhost:4000/user
   //   http://localhost:4000/post
 
@@ -32,7 +34,7 @@ export async function getServerSideProps(context) {
     // `https://jsonplaceholder.typicode.com/posts/${params.postid}`
   );
   const data = await responce.json();
-    console.log(data)
+    console.log("server side rendering")
   if (!data.id) {
     
     return {
