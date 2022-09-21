@@ -1,38 +1,33 @@
-import Link from "next/link"
-function Post({post}) {
-  console.log(post)
+import Link from "next/link";
+function Post({ post }) {
+  // console.log(post);
   return (
     <div>
       <h1>Post list</h1>
 
-      {
-        post.map(post=>{
-          return(
-            <>
-            <Link href= {`/post/${post.id}`}  >
-
-            <div key = {post.id}>
-              <h2>
-                {post.id}
-              </h2>
+      {post.map((post) => {
+        return (
+          <>
+            <Link href={`/post/${post.id}`}>
+              <div key={post.id}>
+                <h2>{post.id}</h2>
                 {post.title}
-            </div>
+              </div>
             </Link>
-            </>
-          )
-        })
-      }
+          </>
+        );
+      })}
     </div>
-  )
+  );
 }
 
-export default Post
+export default Post;
 
-export async function getStaticProps(){
-  const responce = await fetch("https://jsonplaceholder.typicode.com/posts")
-  // const responce = await fetch("http://localhost:4000/post")
+export async function getStaticProps() {
+  // const responce = await fetch("https://jsonplaceholder.typicode.com/posts")
+  const responce = await fetch("http://localhost:4000/post");
 
-  const data  = await responce.json()
-  
-  return{ props : { post: data.slice() }}
+  const data = await responce.json();
+
+  return { props: { post: data.slice() }, revalidate: 2 };
 }
