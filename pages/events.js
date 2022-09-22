@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-import styles from "../styles/event.module.css"
+import styles from "../styles/event.module.scss"
+import Footer from '../components/Footer'
 
 function EventList({ eventList }) {
   const [events, setEvents] = useState(eventList)
@@ -34,7 +35,7 @@ function EventList({ eventList }) {
       {events.map(event => {
         return (
           <div key={event.id}>
-            <h2 className={styles.text}>
+            <h2 className={styles.highlight}>
               {event.id} {event.title} {event.date} | {event.category}
             </h2>
             <p>{event.description}</p>
@@ -47,6 +48,18 @@ function EventList({ eventList }) {
 }
 
 export default EventList
+
+
+EventList.getLayout = function PageLayout(page){
+  return(
+    <>
+      {page}
+      <Footer/>
+    </>
+  )
+}
+
+
 
 export async function getServerSideProps(context) {
   const { query } = context

@@ -1,11 +1,12 @@
 // import styles from "../../styles/Home.module.css"
 
-import styles from "../../styles/post.module.css"
+import styles from "../../styles/post.module.scss"
+
 
 function index({post}) {
   return (
     <div>
-    <h1  className={styles.text}> calling on data from oun API</h1>
+    <h1  className={styles.highlight}> calling on data from oun API</h1>
     {
       post.map(post => {
         return (
