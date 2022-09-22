@@ -2,7 +2,7 @@ function Home() {
   return (
     <div className="container">
 
-      <h1> Server Side Rendering </h1>
+      <h1> client siede data fetching SWR Rendering </h1>
 
     </div>
   )

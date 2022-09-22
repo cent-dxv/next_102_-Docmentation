@@ -18,7 +18,6 @@ function Users({ users }) {
             <p>{user.email}</p>
             <br />
           </div>)
-
         })
       } */}
     </div>

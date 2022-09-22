@@ -1,6 +1,17 @@
 import Link from "next/link";
-function Post({ post }) {
+import useSWR from "swr";
+
+
+const fetcher = () => fetch('https://jsonplaceholder.typicode.com/posts').then((post) =>post.json())
+
+
+function Post() {
   // console.log(post);
+  const {data , error} = useSWR('get' , fetcher)
+  const post  = data
+  console.log(post)
+  if (error) return "somting went wring";
+  if (!post) return "loadding";
   return (
     <div>
       <h1>Post list</h1>
@@ -23,11 +34,4 @@ function Post({ post }) {
 
 export default Post;
 
-export async function getServerSideProps() {
-  const responce = await fetch("https://jsonplaceholder.typicode.com/posts")
-  // const responce = await fetch("http://localhost:4000/post");
 
-  const data = await responce.json();
-
-  return { props: { post: data.slice() } };
-}
