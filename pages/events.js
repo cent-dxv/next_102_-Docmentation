@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
+import styles from "../styles/event.module.css"
+
 function EventList({ eventList }) {
   const [events, setEvents] = useState(eventList)
   const router = useRouter()
@@ -32,7 +34,7 @@ function EventList({ eventList }) {
       {events.map(event => {
         return (
           <div key={event.id}>
-            <h2>
+            <h2 className={styles.text}>
               {event.id} {event.title} {event.date} | {event.category}
             </h2>
             <p>{event.description}</p>

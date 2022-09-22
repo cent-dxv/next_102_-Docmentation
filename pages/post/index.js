@@ -1,9 +1,11 @@
-import { getStaticProps } from "./[id]"
+// import styles from "../../styles/Home.module.css"
+
+import styles from "../../styles/post.module.css"
 
 function index({post}) {
   return (
     <div>
-    <h1> calling on data from oun API</h1>
+    <h1  className={styles.text}> calling on data from oun API</h1>
     {
       post.map(post => {
         return (
