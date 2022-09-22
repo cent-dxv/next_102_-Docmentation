@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 
 import styles from "../styles/event.module.scss"
 import Footer from '../components/Footer'
+import Head from "next/head";
+import Header from '../components/Header';
 
 function EventList({ eventList }) {
   const [events, setEvents] = useState(eventList)
@@ -27,6 +29,9 @@ function EventList({ eventList }) {
 
   return (
     <>
+    <Head>
+<title>   🎉👍meta </title>
+    </Head>
       <button onClick={()=>fetchSportsEvents('sports')}>Sports Events</button>
       <button onClick={()=>fetchSportsEvents('art')}>art Events</button>
       <button onClick={()=>fetchSportsEvents('food')}>foods Events</button>
@@ -53,8 +58,9 @@ export default EventList
 EventList.getLayout = function PageLayout(page){
   return(
     <>
+      {/* <Footer/> */}
       {page}
-      <Footer/>
+      {/* <Header/> */}
     </>
   )
 }
